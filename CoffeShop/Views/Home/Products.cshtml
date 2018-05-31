@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Products";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Product Name:</th>
+        <th>Description:</th>
+        <th>Quantity Available: </th>
+
+    </tr>
+    @for (int i = 0; i < ViewBag.Items.Count; i++)
+    {
+        <tr>
+            <td> @ViewBag.Items[i].Name</td>
+            <td> @ViewBag.Items[i].Description</td>
+            <td> @ViewBag.Items[i].Quantity</td>
+
+        </tr>
+    }
+</table>

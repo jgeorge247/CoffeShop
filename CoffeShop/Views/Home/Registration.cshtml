@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration Justin was here</h2>
+
+<form action="/Home/Welcome">
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" /><br />
+
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" /><br />
+
+    <label for="email" id="email">Email</label>
+    <span id="emailspan"></span>
+    <input type="text" name="email" /><br />
+
+    <label for="phone" id="phone">Phone Number</label>
+    <span id="phonespan"></span>
+    <input type="text" name="phone" /><br />
+
+    <label for="password">Password</label>
+    <input type="password" name="password" /><br />
+    <input type="submit" value="Submit" onclick="return Validate()" />
+
+
+</form>
+<script>
+    function ValidateEmail() {
+        var email = document.getElementById("email");
+        var span = document.getElementById("emailspan");
+        if (email.match(/^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            return true;
+        }
+        else {
+            emailspan.innerHTML = "That is not a valid email";
+            return false;
+        }
+    }
+
+    function ValidatePhone() {
+        var phone = document.getElementById("phone");
+        var span = document.getElementById("phonespan");
+        if (phone.match(/^(\(\d{3}\)|\d{3})-?\d{3}-?\d{4}$/)) {
+            return true;
+        }
+        else {
+            phonespan.innerHTML = "That is not a valid phone";
+            return false;
+        }
+    }
+
+    function Validate() {
+        if (!ValidateEmail()) {
+            return false;
+        }
+        else if (!ValidatePhone()) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+<h1>@ViewBag.data</h1>
