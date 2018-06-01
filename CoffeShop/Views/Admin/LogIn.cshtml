@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2>Login</h2>
+<p>Enter your Username and Password</p>
+<form action="/Admin/Index">
+    <label for="username" id="username">Username</label>
+    <input type="text" name="username" /><br />
+    <span id="usernamespan"></span><br />
+
+    <label for="password" id="password">Password</label>
+    <input type="password" name="password" /><br />
+    <span id="pwspan"></span><br />
+
+    <input type="submit" value="Submit" onclick="return Validate()" />
+</form>
+
+<script>
+    function ValidUsername() {
+        var username = document.getElementById("username.value");
+        var span = document.getElementById("usernamespan");
+        if (username == "123") {
+            return true;
+        }
+        else {
+            usernamespan.innerHTML = "Invalid Username"
+            return false;
+        }
+    }
+
+    function ValidPassword() {
+        var password = document.getElementById("password.value");
+        var span = document.getElementById("pwspan");
+        if (password == "1234") {
+            return true;
+        }
+        else {
+            pwspan.innerHTML = "Invalid Password"
+            return false;
+        }
+    }
+
+    function Validate() {
+        if (!ValidUsername()) {
+            return false;
+        }
+        else if (!ValidPassword()) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
