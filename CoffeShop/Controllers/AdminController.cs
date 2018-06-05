@@ -17,6 +17,9 @@ namespace CoffeShop.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            //CoffeShopDBEntities db = new CoffeShopDBEntities();
+            //List<Item> items = db.Items.ToList();
+            //ViewBag.Items = items;
             return View(db.Items.ToList());
         }
 
@@ -118,6 +121,34 @@ namespace CoffeShop.Controllers
             db.Items.Remove(item);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Add(int id)
+        {
+            CoffeShopDBEntities db = new CoffeShopDBEntities();
+
+            //check if the Cart object already exists
+            if (Session["Cart"] == null)
+            {
+                //if it doesn't, make a new list of books
+                List<Item> cart = new List<Item>();
+                //add this item to it
+                cart.Add((from b in db.Items
+                          where b.ProductID == id
+                          select b).Single());
+                //add the list to the session
+                Session.Add("Cart", cart);
+            }
+            else
+            {
+                //if it does exist, get the list
+                List<Item> cart = (List<Item>)(Session["Cart"]);
+                //add this item to it
+                cart.Add((from b in db.Items
+                          where b.ProductID == id
+                          select b).Single());
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)

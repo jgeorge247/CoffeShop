@@ -11,12 +11,20 @@ namespace CoffeShop.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Item
     {
+        [Required(ErrorMessage = "Must enter a name")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Must enter a description")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Quantity is not in range")]
         public string Quantity { get; set; }
+
+        [Required(ErrorMessage = "Price is not in range")]
         public string Price { get; set; }
         public int ProductID { get; set; }
     }

@@ -1,0 +1,13 @@
+﻿@using CoffeShop.Models
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Your Cart:</h2>
+
+<ul>
+    @foreach (Item i in (List<Item>)Session["Cart"])
+    {
+        <li>@i.Name - @i.Price</li>
+    }
+</ul>

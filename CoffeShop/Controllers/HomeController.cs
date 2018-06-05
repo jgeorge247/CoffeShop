@@ -14,19 +14,6 @@ namespace CoffeShop.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Products()
-        {
-            CoffeShopDBEntities ORM = new CoffeShopDBEntities();   //add items to list      
-            ViewBag.Items = ORM.Items.ToList();
-            return View();
-        }
 
         //this will go to my registration view
         public ActionResult Registration()
@@ -54,6 +41,13 @@ namespace CoffeShop.Controllers
                 }
 
             }
+            return View();
+        }
+
+
+        public ActionResult Add()
+        {
+            ViewBag.Message = "Add";
             return View();
         }
     }
